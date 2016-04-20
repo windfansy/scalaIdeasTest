@@ -5,9 +5,10 @@ package FunctionalProgrammingPrinciplesInScala.week7
   */
 object mapDemo {
   def main(args: Array[String]) {
-    val fruits = List("apple", "banana", "pear", "orange")
+    val fruits = List("apple", "banana", "pear", "orange", "pineapple")
     println(fruits.sorted)
     println(fruits.sortWith(_.length < _.length))
+    println(fruits.groupBy(_.head))
 
     //Poly Demo
     println("Poly Demo")
