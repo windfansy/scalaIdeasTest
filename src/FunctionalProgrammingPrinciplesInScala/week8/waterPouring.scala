@@ -29,7 +29,8 @@ class WaterPouring(capacity: Vector[Int]) {
   }
 
   val glasses = 0 until capacity.length
-  /*val moves = (glasses map (glass => Empty(glass))) ++ (glasses map (glass => Fill(glass))) ++
+  /* map的方法不行，glass1=glass2的时候会产生空集()
+  val moves = (glasses map (glass => Empty(glass))) ++ (glasses map (glass => Fill(glass))) ++
     (glasses flatMap { glass1 => glasses map {
       glass2 => if (glass1 != glass2) Pour(glass1, glass2)
     }
@@ -59,8 +60,6 @@ class WaterPouring(capacity: Vector[Int]) {
       } yield next
       paths #:: from(more, (more map (_.endState)) ++ explored)
     }
-    /* equal to for iteration
-     */
   }
 
   val pathSets = from(Set(initialPath), Set(initialState))
