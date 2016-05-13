@@ -1,6 +1,5 @@
 package TestFunction
 
-import java.text.SimpleDateFormat
 import java.util.Date
 
 /**
@@ -8,10 +7,7 @@ import java.util.Date
   */
 object SystemCurrentTimeTest {
   def main(args: Array[String]) {
-    val allDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-    val timeFormat = new SimpleDateFormat("HH:mm")
-    println(allDateFormat.format(new Date(1146656000000L)))
-    println(timeFormat.format(new Date(1146656000000L)))
+    println(new Date(1146656000000L))
     //println("5ab33f4387134f4386cf00eff5e41f67".length)
   }
 }
