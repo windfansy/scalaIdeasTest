@@ -127,5 +127,24 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("forall") {
+    val s1 = (x: Int) => x > 0
+    val s2 = (x: Int) => x * x >= 0
+    val s3 = (x: Int) => x > 3000
+
+    assert(!forall(s1, (y: Int) => y < 1000), "assert 1")
+    assert(forall(s2, (y: Int) => y <= 1000), "assert 2")
+    assert(forall(s3, (y: Int) => y <= 1000), "assert 3")
+  }
+
+  test("exists") {
+    val s1 = (x: Int) => x > 0
+    val s2 = (x: Int) => x < -100
+    val s3 = (x: Int) => x > 3000
+
+    assert(exists(s1, (y: Int) => y < 1000), "assert 1")
+    assert(exists(s2, (y: Int) => y >= -900), "assert 2")
+    assert(!exists(s3, (y: Int) => y <= 1000), "assert 3")
+  }
 
 }
