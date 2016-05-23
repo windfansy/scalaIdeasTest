@@ -142,9 +142,16 @@ class FunSetSuite extends FunSuite {
     val s2 = (x: Int) => x < -100
     val s3 = (x: Int) => x > 3000
 
-    assert(exists(s1, (y: Int) => y < 1000), "assert 1")
-    assert(exists(s2, (y: Int) => y >= -900), "assert 2")
-    assert(!exists(s3, (y: Int) => y <= 1000), "assert 3")
+    assert(exists(s1, y => y < 1000), "assert 1")
+    assert(!exists(s2, y => y >= 100), "assert 2")
+    assert(!exists(s3, y => y <= 1000), "assert 3")
+
+  }
+
+  test("map") {
+    val s1 = (x: Int) => x < 100 && x > 0
+    printSet(map(s1, (x: Int) => x * x))
+
   }
 
 }

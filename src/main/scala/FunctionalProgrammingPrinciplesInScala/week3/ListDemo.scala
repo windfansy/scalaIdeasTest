@@ -1,4 +1,4 @@
-package FunctionalProgrammingPrinciplesInScala.week4
+package FunctionalProgrammingPrinciplesInScala.week3
 
 /**
   * Created by T440P on 2016/3/30.
@@ -9,6 +9,7 @@ object ListDemo {
     val testList1 = new Cons[Int](1, new Cons[Int](2, new Cons[Int](3, new Cons[Int](4, new Nil[Int]))))
     println(testList1)
     println(nth(3, testList1))
+    println("\n")
     println(nth(4, testList1))
 
   }
