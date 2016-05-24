@@ -78,11 +78,6 @@ class TweetSetSuite extends FunSuite {
      GoogleVsApple.appleTweets.foreach(tw => println(tw.toString))
      println("\nTrending Tweets")
      GoogleVsApple.trending.foreach(tw => println(tw.toString))
-    /*new TestSets {
-      val google = List("android", "Android", "galaxy", "Galaxy", "nexus", "Nexus", "a")
-      val googleTweets: TweetSet = set5.filter(tw => google.exists(x => tw.text.contains(x)))
-      googleTweets.foreach(tw => println(tw.toString))
-    }*/
   }
 
 }
