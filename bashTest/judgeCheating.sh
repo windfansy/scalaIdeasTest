@@ -1,6 +1,6 @@
 #!/bin/bash
+# 计算duration的结果并存储到文件中，函数四个参数分别为   $1 startTime  $2 endTime  $3 count $4 resultFile
 function saveDurationResult {
-    # $1 startTime  $2 lastTime  $3 count $4 resultFile
     startTime=$1
     endTime=$2
     count=$3
@@ -18,15 +18,14 @@ function saveDurationResult {
 if [ ! -d "tmp" ]; then
         mkdir "tmp"
 fi
-originFileName=${1##*/}
-#echo $originFileName
-cat  $1 | cut -d ' ' -f2  | awk -F':' '{print $1 * 60 * 60 + $2 * 60 + $3}' > "tmp/$originFileName.tmp"
+originFileName=${1##*/} #截取最后一个"/"后面的内容，即文件名
+cat  $1 | cut -d ' ' -f2  | awk -F':' '{print $1 * 60 * 60 + $2 * 60 + $3}' > "tmp/$originFileName.tmp" #截取日志中的时间并转换成Int的秒数
 sort "tmp/$originFileName.tmp" | { while read timeValue; do
     if [ ! -e "$originFileName.result" ]; then
             printf "startTime    endTime    duration(s)    speed(per/s)\n" > "$originFileName.result"
             count=0
     fi
-    if [ $count -eq 0 ]; then
+    if [ $count -eq 0 ]; then   # 整数判断用-eq
         startTime=${timeValue}
         lastTime=${timeValue}
         count=$(( count + 1))
