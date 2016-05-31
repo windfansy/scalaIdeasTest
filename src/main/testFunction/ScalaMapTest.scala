@@ -8,8 +8,7 @@ import scala.collection.mutable
 object ScalaMapTest {
   def main(args: Array[String]) {
     val stringMap = mutable.Map[String, Int]()
-    stringMap += ("test"->3)
+    stringMap += ("test" -> 3)
     println(stringMap)
-
   }
 }

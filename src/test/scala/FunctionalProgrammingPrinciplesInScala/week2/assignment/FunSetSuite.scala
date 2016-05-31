@@ -2,7 +2,6 @@ package FunctionalProgrammingPrinciplesInScala.week2.assignment
 
 import org.scalatest.FunSuite
 
-
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -25,7 +24,6 @@ class FunSetSuite extends FunSuite {
     * - ignore
     * - pending
     */
-
   /**
     * Tests are written using the "test" operator and the "assert" method.
     */
@@ -46,7 +44,6 @@ class FunSetSuite extends FunSuite {
   // test("adding ints") {
   //   assert(1 + 2 === 3)
   // }
-
 
   import FunSets._
 
@@ -72,7 +69,6 @@ class FunSetSuite extends FunSuite {
     * abstract classes), and create an instance inside each test method.
     *
     */
-
   trait TestSets {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
@@ -95,6 +91,7 @@ class FunSetSuite extends FunSuite {
       * to the values "s1" to "s3".
       */
     new TestSets {
+
       /**
         * The string argument of "assert" is a message that is printed in case
         * the test fails. This helps identifying which assertion failed.
@@ -145,13 +142,10 @@ class FunSetSuite extends FunSuite {
     assert(exists(s1, y => y < 1000), "assert 1")
     assert(!exists(s2, y => y >= 100), "assert 2")
     assert(!exists(s3, y => y <= 1000), "assert 3")
-
   }
 
   test("map") {
     val s1 = (x: Int) => x < 100 && x > 0
     printSet(map(s1, (x: Int) => x * x))
-
   }
-
 }

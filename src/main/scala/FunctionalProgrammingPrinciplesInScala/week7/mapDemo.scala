@@ -26,7 +26,6 @@ object mapDemo {
     println(poly2_1)
     println(poly2_2)
     println(poly2_3)
-
   }
 }
 
@@ -42,7 +41,9 @@ class Poly(terms0: Map[Int, Double]) {
     (expo, terms(expo) + coef)
   }
 
-  override def toString = terms.toList.sorted.reverse.map { case (expo, coef) => coef + "x^" + expo }.mkString(" + ")
+  override def toString =
+    terms.toList.sorted.reverse.map { case (expo, coef) => coef + "x^" + expo }
+      .mkString(" + ")
 }
 
 class Poly2(terms0: Map[Int, Double]) {
@@ -50,12 +51,15 @@ class Poly2(terms0: Map[Int, Double]) {
 
   val terms = terms0 withDefaultValue 0.0
 
-  def +(other: Poly): Poly = new Poly((other.terms foldLeft terms) (addTerm))
+  def +(other: Poly): Poly = new Poly((other.terms foldLeft terms)(addTerm))
 
-  def addTerm(result: Map[Int, Double], current: (Int, Double)): Map[Int, Double] = {
+  def addTerm(
+      result: Map[Int, Double], current: (Int, Double)): Map[Int, Double] = {
     val (expo, coef) = current
     result + (expo -> (result(expo) + coef))
   }
 
-  override def toString = terms.toList.sorted.reverse.map { case (expo, coef) => coef + "x^" + expo }.mkString(" + ")
+  override def toString =
+    terms.toList.sorted.reverse.map { case (expo, coef) => coef + "x^" + expo }
+      .mkString(" + ")
 }

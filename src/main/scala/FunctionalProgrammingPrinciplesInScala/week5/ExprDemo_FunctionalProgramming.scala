@@ -9,11 +9,12 @@ object ExprDemo {
     println(sumOfNumber + " = " + sumOfNumber.eval)
     val productOfNumber = Prod(Number(4), Number(33))
     println(productOfNumber + " = " + productOfNumber.eval)
-    val compositeOpOfNumber = Prod(Sum(Number(4), Number(33)), Prod(Number(4), Number(33)))
+    val compositeOpOfNumber = Prod(
+        Sum(Number(4), Number(33)), Prod(Number(4), Number(33)))
     println(compositeOpOfNumber + " = " + compositeOpOfNumber.eval)
-    val compositeOpOfNumberAndVar = Prod(Sum(Number(4), Var("x")), Prod(Var("y"), Number(33)))
+    val compositeOpOfNumberAndVar = Prod(
+        Sum(Number(4), Var("x")), Prod(Var("y"), Number(33)))
     println(compositeOpOfNumberAndVar)
-
   }
 }
 
@@ -27,8 +28,10 @@ trait Expr {
 
   override def toString = this match {
     case Number(n) => n.toString
-    case Sum(expr1, expr2) => "(" + expr1.toString + " + " + expr2.toString +")"
-    case Prod(expr1, expr2) => "(" + expr1.toString + " * " + expr2.toString +")"
+    case Sum(expr1, expr2) =>
+      "(" + expr1.toString + " + " + expr2.toString + ")"
+    case Prod(expr1, expr2) =>
+      "(" + expr1.toString + " * " + expr2.toString + ")"
     case Var(name) => name
     case _ => throw new Error("Not Supported Expr Type")
   }

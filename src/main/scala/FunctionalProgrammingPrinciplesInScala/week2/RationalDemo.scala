@@ -67,8 +67,4 @@ class Rational(x: Int, y: Int) {
   def /(that: Rational) = {
     new Rational(numer * that.denom, denom * that.numer)
   }
-
 }
-
-
-

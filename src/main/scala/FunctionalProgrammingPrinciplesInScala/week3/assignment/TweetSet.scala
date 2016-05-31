@@ -5,8 +5,7 @@ package FunctionalProgrammingPrinciplesInScala.week3.assignment
   */
 class Tweet(val user: String, val text: String, val retweets: Int) {
   override def toString: String =
-    "User: " + user + "\n" +
-      "Text: " + text + " [" + retweets + "]"
+    "User: " + user + "\n" + "Text: " + text + " [" + retweets + "]"
 }
 
 /**
@@ -79,7 +78,6 @@ abstract class TweetSet {
   /**
     * The following methods are already implemented
     */
-
   /**
     * Returns a new `TweetSet` which contains all elements of this set, and the
     * the new element `tweet` in case it does not already exist in this set.
@@ -110,7 +108,6 @@ class Empty extends TweetSet {
   /**
     * The following methods are already implemented
     */
-
   def contains(tweet: Tweet): Boolean = false
 
   def incl(tweet: Tweet): TweetSet = new NonEmpty(tweet, new Empty, new Empty)
@@ -130,7 +127,8 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 
   def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = {
     val lAcc = left.filterAcc(p, acc)
-    if (p(elem)) right.filterAcc(p, lAcc.incl(elem)) else right.filterAcc(p, lAcc)
+    if (p(elem)) right.filterAcc(p, lAcc.incl(elem))
+    else right.filterAcc(p, lAcc)
 
     /*  val l = left.filterAcc(p, acc)
         val r = right.filterAcc(p, acc)
@@ -138,11 +136,9 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
         if (p(elem)) lr.incl(elem) else lr*/
   }
 
-
   /**
     * The following methods are already implemented
     */
-
   def contains(x: Tweet): Boolean =
     if (x.text < elem.text) left.contains(x)
     else if (elem.text < x.text) right.contains(x)
@@ -166,25 +162,27 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   }
 
   def union(that: TweetSet): TweetSet = {
-    left union (right union (that incl elem))   //必须加括号，否则写成left union right union that incl elem，性能奇差，跑不出结果
+    left union (right union (that incl elem)) //必须加括号，否则写成left union right union that incl elem，�?�能奇差，跑不出结果
     //    right.union(left.union(that.incl(elem)))
   }
 
   def descendingByRetweet: TweetList = {
     val tweet = mostRetweeted
-    new Cons(tweet, remove(tweet).descendingByRetweet)  //没想出来，参考网上答案的
+    new Cons(tweet, remove(tweet).descendingByRetweet) //没想出来，参考网上答案的
   }
 
   def mostRetweeted: Tweet = {
     var maxRetweetsNum = elem.retweets
     var maxRetweet = elem
-    foreach(tw => if (tw.retweets > maxRetweetsNum) {
-      maxRetweetsNum = tw.retweets
-      maxRetweet = tw
+    foreach(
+        tw =>
+          if (tw.retweets > maxRetweetsNum) {
+        maxRetweetsNum = tw.retweets
+        maxRetweet = tw
     })
     maxRetweet
 
-    //    网上另外一种实现
+    //    网上另外�?种实�?
     //    val all = right.union(left);
     //    val morePopular = all.filter(p => p.retweets > elem.retweets)
     //    if (morePopular.isEmpty) elem else morePopular.mostRetweeted
@@ -217,19 +215,21 @@ class Cons(val head: Tweet, val tail: TweetList) extends TweetList {
   def isEmpty = false
 }
 
-
 object GoogleVsApple {
   val google = List("android", "Android", "galaxy", "Galaxy", "nexus", "Nexus")
   val apple = List("ios", "iOS", "iphone", "iPhone", "ipad", "iPad")
 
-  lazy val googleTweets: TweetSet = TweetReader.allTweets.filter(tw => google.exists(x => tw.text.contains(x)))
-  lazy val appleTweets: TweetSet = TweetReader.allTweets.filter(tw => apple.exists(x => tw.text.contains(x)))
+  lazy val googleTweets: TweetSet =
+    TweetReader.allTweets.filter(tw => google.exists(x => tw.text.contains(x)))
+  lazy val appleTweets: TweetSet =
+    TweetReader.allTweets.filter(tw => apple.exists(x => tw.text.contains(x)))
 
   /**
     * A list of all tweets mentioning a keyword from either apple or google,
     * sorted by the number of retweets.
     */
-  lazy val trending: TweetList = (googleTweets union appleTweets) descendingByRetweet
+  lazy val trending: TweetList =
+    (googleTweets union appleTweets) descendingByRetweet
 }
 
 object Main extends App {

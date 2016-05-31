@@ -13,5 +13,4 @@ object DateFormatTest {
     println(allDateFormat.format(new Date(1146656000000L)))
     println(timeFormat.format(new Date(1146656000000L)))
   }
-
 }

@@ -4,6 +4,7 @@ package FunctionalProgrammingPrinciplesInScala.week2.assignment
   * 2. Purely Functional Sets.
   */
 object FunSets {
+
   /**
     * We represent a set by its characteristic function, i.e.
     * its `contains` predicate.
@@ -19,7 +20,6 @@ object FunSets {
     * Returns the set of the one given element.
     */
   def singletonSet(elem: Int): Set = x => x == elem
-
 
   /**
     * Returns the union of the two given sets,
@@ -43,7 +43,6 @@ object FunSets {
     * Returns the subset of `s` for which `p` holds.
     */
   def filter(s: Set, p: Int => Boolean): Set = intersect(s, p)
-
 
   /**
     * The bounds for `forall` and `exists` are +/- 1000.
@@ -96,4 +95,3 @@ object FunSets {
     println(toString(s))
   }
 }
-

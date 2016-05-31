@@ -13,11 +13,12 @@ object flattenImpl {
   def doFlatten(xs: List[Any]): List[Any] = {
     xs match {
       case List() => xs
-      case x :: xs1 => x match {
-        case List() => doFlatten(xs1)
-        case y :: ys => y :: doFlatten(ys) ++ doFlatten(xs1)
-        case _ => x :: doFlatten(xs1)
-      }
+      case x :: xs1 =>
+        x match {
+          case List() => doFlatten(xs1)
+          case y :: ys => y :: doFlatten(ys) ++ doFlatten(xs1)
+          case _ => x :: doFlatten(xs1)
+        }
     }
   }
 }

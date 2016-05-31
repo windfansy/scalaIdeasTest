@@ -28,7 +28,8 @@ object streamDemo {
       lazy val guesses: Stream[Double] = 1 #:: (guesses map improve)
       guesses
     }
-    def isGoodEnough(x: Double, guess: Double): Boolean = if (math.abs(guess * guess - x) < 0.01 * x) true else false
+    def isGoodEnough(x: Double, guess: Double): Boolean =
+      if (math.abs(guess * guess - x) < 0.01 * x) true else false
 
     println(sqrtStream(4.0).filter(isGoodEnough(4, _)).take(10).toList)
 
@@ -38,7 +39,5 @@ object streamDemo {
       else lo #:: streamRange(lo + 1, hi)
     }
     println(streamRange(1000, 10000).take(20).toList)
-
-
   }
 }

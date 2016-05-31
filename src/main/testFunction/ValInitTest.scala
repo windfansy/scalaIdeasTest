@@ -6,5 +6,3 @@ package TestFunction
 class ValInitTest(val name: String) {
   //def setName(aName: String) = name = aName
 }
-
-

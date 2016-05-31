@@ -34,7 +34,8 @@ object Empty extends IntSet {
   override def toString = "."
 }
 
-class NonEmpty(val ele: Int, val left: IntSet, val right: IntSet) extends IntSet {
+class NonEmpty(val ele: Int, val left: IntSet, val right: IntSet)
+    extends IntSet {
   def contains(x: Int) = {
     if (ele > x) left contains x
     else if (ele < x) right contains x

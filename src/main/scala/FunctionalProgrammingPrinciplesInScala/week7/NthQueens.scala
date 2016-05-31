@@ -14,7 +14,6 @@ object NthQueens {
     println(showAll(queens(4), 3))
     //queens(1)
     // println(queens(8) map showImplByFor mkString "\n")
-
   }
 
   def queens(n: Int) = {
@@ -23,13 +22,15 @@ object NthQueens {
         case (r, c) => c != col && math.abs(col - c) != queens.length - r
       }
     }
-    def placeQueens(k: Int): Set[List[Int]] = {//之所以写placeQueens而不是直接用queens去递归，并不是因为尾递归，而是col的取值永远是0 until n
+    def placeQueens(k: Int): Set[List[Int]] = {
+      //之所以写placeQueens而不是直接用queens去�?�归，并不是因为尾�?�归，�?�是col的取值永远是0 until n
       if (k == 0) Set(List())
-      else for {
-        queens <- placeQueens(k - 1)
-        col <- 0 until n
-        if isSafe(col, queens)
-      } yield col :: queens
+      else
+        for {
+          queens <- placeQueens(k - 1)
+          col <- 0 until n
+          if isSafe(col, queens)
+        } yield col :: queens
     }
     placeQueens(n)
   }
@@ -51,13 +52,12 @@ object NthQueens {
 
   }*/
 
-
   def showAll(queens: Set[List[Int]], showNumber: Int): String = {
-    val queensDsp = queens take showNumber map {
-      queen =>
+    val queensDsp =
+      queens take showNumber map { queen =>
         queen.reverse map (col =>
-          Vector.fill(queen.length)("* ").updated(col, "X ").mkString) mkString "\n"
-    }
+              Vector.fill(queen.length)("* ").updated(col, "X ").mkString) mkString "\n"
+      }
     "\n" + (queensDsp mkString "\n\n")
   }
 
@@ -66,19 +66,16 @@ object NthQueens {
   }
 
   def showImplByMap(queens: List[Int]): String = {
-    val queensDsp = queens.reverse map {
-      col =>
+    val queensDsp =
+      queens.reverse map { col =>
         Vector.fill(queens.length)("* ").updated(col, "X ").mkString
-    } mkString "\n"
+      } mkString "\n"
     "\n" + queensDsp
   }
 
   def showImplByFor(queens: List[Int]) = {
-    val lines =
-      for (col <- queens.reverse)
-        yield Vector.fill(queens.length)("* ").updated(col, "X ").mkString
+    val lines = for (col <- queens.reverse) yield
+      Vector.fill(queens.length)("* ").updated(col, "X ").mkString
     "\n" + lines.mkString("\n")
   }
-
-
 }

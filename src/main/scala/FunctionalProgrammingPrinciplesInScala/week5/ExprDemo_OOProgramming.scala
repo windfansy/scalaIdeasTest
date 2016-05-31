@@ -9,11 +9,12 @@ object ExprDemo_OOProgramming {
     println(sumOfNumber + " = " + sumOfNumber.eval)
     val productOfNumber = Prod_OO(Number_OO(4), Number_OO(33))
     println(productOfNumber + " = " + productOfNumber.eval)
-    val compositeOpOfNumber = Prod_OO(Sum_OO(Number_OO(4), Number_OO(33)), Prod_OO(Number_OO(4), Number_OO(33)))
+    val compositeOpOfNumber = Prod_OO(Sum_OO(Number_OO(4), Number_OO(33)),
+                                      Prod_OO(Number_OO(4), Number_OO(33)))
     println(compositeOpOfNumber + " = " + compositeOpOfNumber.eval)
-    val compositeOpOfNumberAndVar = Prod_OO(Sum_OO(Number_OO(4), Var_OO("x")), Prod_OO(Var_OO("y"), Number_OO(33)))
+    val compositeOpOfNumberAndVar = Prod_OO(
+        Sum_OO(Number_OO(4), Var_OO("x")), Prod_OO(Var_OO("y"), Number_OO(33)))
     println(compositeOpOfNumberAndVar)
-
   }
 }
 

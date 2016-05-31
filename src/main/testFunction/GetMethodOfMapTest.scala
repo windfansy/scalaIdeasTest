@@ -13,7 +13,7 @@ object GetMethodOfMapTest {
     if (testMap.get(13).isDefined) println("equal") else println("unequal")
     if (testMap.get(13) == None) println("equal") else println("unequal")
 
-    println (testMap.get(10).getOrElse("no value"))
-    println (testMap.get(13).getOrElse("no value"))
+    println(testMap.get(10).getOrElse("no value"))
+    println(testMap.get(13).getOrElse("no value"))
   }
 }

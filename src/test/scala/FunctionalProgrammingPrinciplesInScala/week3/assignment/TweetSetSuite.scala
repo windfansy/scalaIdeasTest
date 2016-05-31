@@ -72,12 +72,11 @@ class TweetSetSuite extends FunSuite {
   }
 
   test("see google and apple tweets") {
-     println("Google Tweets")
-     GoogleVsApple.googleTweets.foreach(tw => println(tw.toString))
-     println("\nApple Tweets")
-     GoogleVsApple.appleTweets.foreach(tw => println(tw.toString))
-     println("\nTrending Tweets")
-     GoogleVsApple.trending.foreach(tw => println(tw.toString))
+    println("Google Tweets")
+    GoogleVsApple.googleTweets.foreach(tw => println(tw.toString))
+    println("\nApple Tweets")
+    GoogleVsApple.appleTweets.foreach(tw => println(tw.toString))
+    println("\nTrending Tweets")
+    GoogleVsApple.trending.foreach(tw => println(tw.toString))
   }
-
 }

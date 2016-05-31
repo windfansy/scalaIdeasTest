@@ -30,7 +30,8 @@ object main {
         if (preParenthese == 0) true else false
       else if (chars.head == '(') innerBalance(chars.tail, preParenthese + 1)
       else if (chars.head == ')')
-        if (preParenthese - 1 < 0) false else innerBalance(chars.tail, preParenthese - 1)
+        if (preParenthese - 1 < 0) false
+        else innerBalance(chars.tail, preParenthese - 1)
       else innerBalance(chars.tail, preParenthese)
     }
     innerBalance(chars, 0)
@@ -38,24 +39,30 @@ object main {
 
   def testBalance() = {
     assert(balance("(if (zero? x) max (/ 1 x))".toList))
-    assert(balance("I told him (that it’s not (yet) done). (But he wasn’t listening)".toList))
+    assert(
+        balance(
+            "I told him (that it’s not (yet) done). (But he wasn’t listening)".toList))
     assert(!balance(":-)".toList))
     assert(!balance("())(".toList))
     assert(!balance(")()()(".toList))
   }
 
   def countChange(money: Int, coins: List[Int]): Int = {
-    def innerCountChange(money: Int, coins: List[Int], usedCoins: List[Int]): Int = {
+    def innerCountChange(
+        money: Int, coins: List[Int], usedCoins: List[Int]): Int = {
       if (money == 0) {
         disPlayCountChange(usedCoins)
         1
-      }
-      else if (money < 0 || coins.isEmpty) 0
-      else if (money - coins.head >= 0) innerCountChange(money - coins.head, coins, coins.head :: usedCoins) + innerCountChange(money, coins.tail, usedCoins)
+      } else if (money < 0 || coins.isEmpty) 0
+      else if (money - coins.head >= 0)
+        innerCountChange(money - coins.head, coins, coins.head :: usedCoins) +
+        innerCountChange(money, coins.tail, usedCoins)
       else innerCountChange(money, coins.tail, usedCoins)
     }
-    def disPlayCountChange(usedCoins: List[Int]) = println(usedCoins.mkString(","))
-    if (money <= 0 || coins.isEmpty) 0 else innerCountChange(money, coins, List[Int]())
+    def disPlayCountChange(usedCoins: List[Int]) =
+      println(usedCoins.mkString(","))
+    if (money <= 0 || coins.isEmpty) 0
+    else innerCountChange(money, coins, List[Int]())
   }
 
   def testCountChange() = {

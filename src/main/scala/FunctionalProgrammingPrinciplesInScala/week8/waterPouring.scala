@@ -14,17 +14,18 @@ class WaterPouring(capacity: Vector[Int]) {
   }
 
   case class Empty(glass: Int) extends Move {
-    def change(state: State) = state updated(glass, 0)
+    def change(state: State) = state updated (glass, 0)
   }
 
   case class Fill(glass: Int) extends Move {
-    def change(state: State) = state updated(glass, capacity(glass))
+    def change(state: State) = state updated (glass, capacity(glass))
   }
 
   case class Pour(from: Int, to: Int) extends Move {
     def change(state: State) = {
       val amount = state(from) min (capacity(to) - state(to))
-      state updated(to, state(to) + amount) updated(from, state(from) - amount)
+      state updated (to, state(to) + amount) updated (from, state(from) -
+          amount)
     }
   }
 
@@ -35,7 +36,9 @@ class WaterPouring(capacity: Vector[Int]) {
       glass2 => if (glass1 != glass2) Pour(glass1, glass2)
     }
     })*/
-  val moves = (for (glass <- glasses) yield Empty(glass)) ++ (for (glass <- glasses) yield Fill(glass)) ++
+  val moves =
+    (for (glass <- glasses) yield
+      Empty(glass)) ++ (for (glass <- glasses) yield Fill(glass)) ++
     (for (from <- glasses; to <- glasses if from != to) yield Pour(from, to))
 
   class Path(history: List[Move], val endState: State) {
@@ -72,8 +75,6 @@ class WaterPouring(capacity: Vector[Int]) {
       if path.endState contains target
     } yield path
   }
-
-
 }
 
 object WaterPouring {

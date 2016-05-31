@@ -7,7 +7,6 @@ object ListDemo2 {
   def main(args: Array[String]) {
     val xs = new Cons[String]("head", Nil)
   }
-
 }
 
 trait List[+T] {
