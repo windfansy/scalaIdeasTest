@@ -1,0 +1,101 @@
+scalafmt 0.2.5
+Usage: scalafmt [options]
+
+  -f <value> | --files <value>
+        can be directory, in which case all *.scala files are formatted. If not provided, reads from stdin.
+  -c <value> | --config <value>
+        read style flags, see "Style configuration option", from this config file. The file can contain comments starting with //
+  -i | --in-place
+        write output to file, does nothing if file is not specified
+  --test
+        test for mis-formatted code, exits with status 1 on failure.
+  -v | --version
+        print version 
+  -h | --help
+        prints this usage text
+
+Style configuration options:
+  -s <value> | --style <value>
+        base style, must be one of: Set(Scala.js, default, defaultWithAlign)
+  --maxColumn <value>
+        See ScalafmtConfig scaladoc.
+  --continuationIndentCallSite <value>
+        See ScalafmtConfig scaladoc.
+  --continuationIndentDefnSite <value>
+        See ScalafmtConfig scaladoc.
+  --scalaDocs
+        See ScalafmtConfig scaladoc.
+  --javaDocs
+        Sets scalaDocs to false. See ScalafmtConfig scaladoc.
+  --alignStripMarginStrings <value>
+        (deprecated) Use assumeStandardLibraryStripMargin, will be removed in 0.3.
+  --assumeStandardLibraryStripMargin <value>
+        See ScalafmtConfig scaladoc.
+  --binPackParentConstructors <value>
+        See ScalafmtConfig scaladoc.
+  --spacesInImportCurlyBraces <value>
+        See ScalafmtConfig scaladoc.
+  --allowNewlineBeforeColonInMassiveReturnTypes <value>
+        See ScalafmtConfig scaladoc.
+  --alignTokens <value>
+        (experimental). Comma separated sequence of tokens to align by. Each
+        token is a ; separated pair of strings where the first string
+        is the string literal value of the token to align by and the
+        second string is a regular expression matching the class
+        name of the scala.meta.Tree that "owns" that token.
+
+        Examples:
+
+        1. => in pattern matching
+        =>;Case
+
+        2. Align by -> tuples.
+        ->;Term.ApplyInfix
+
+        NOTE. the closest owner of -> is actually Term.Name,
+        but in case Term.Name we match against the parent of Term.Name.
+
+        3. Assignment of def var/val/def
+        =;Defn.(Va(l|r)|Def)
+
+        4. Comment owned by whatever tree
+        //;.*
+
+        To use all default alignment rules, use --style defaultWithAlign.
+        To pick your favirite alignment rules, set --alignTokens <value> to:
+        =>;Case,=;Defn.(Va(l|r)|Def),->;Term.ApplyInfix,//;.*
+
+        It's best to play around with scala.meta in a console to
+        understand which regexp you should use for the owner.
+
+
+Examples:
+
+
+// get help
+scalafmt --help
+
+// print formatted contents of file to stdout.
+scalafmt -f Code.scala
+
+// write formatted contents to file.
+scalafmt -i -f Code1.scala,Code2.scala
+
+// format with predefined custom style
+scalafmt --style defaultWithAlign -f Code.scala
+
+// read style options from a configuration file
+$ cat .scalafmt
+--maxColumn 120
+--javaDocs // This is a comment.
+$ scalafmt --config .scalafmt -i -f Code.scala
+
+// format all files in current directory, write new contents to each file.
+scalafmt -i -f .
+
+// read scala code from stdin and print formatted contents to stdout.
+scalafmt
+    
+
+Please file bugs to https://github.com/olafurpg/scalafmt/issues
+      
