@@ -12,5 +12,6 @@ object URIDemo {
     println("uri.getRawPath: " + uri.getRawPath)
     println("uri.getRawQuery: " + uri.getRawQuery)
     println("uri.getRawFragment: " + uri.getRawFragment)
+
   }
 }
