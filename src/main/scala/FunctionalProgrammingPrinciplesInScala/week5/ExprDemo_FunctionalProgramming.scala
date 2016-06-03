@@ -15,6 +15,7 @@ object ExprDemo {
     val compositeOpOfNumberAndVar = Prod(
         Sum(Number(4), Var("x")), Prod(Var("y"), Number(33)))
     println(compositeOpOfNumberAndVar)
+
   }
 }
 
