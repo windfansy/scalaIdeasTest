@@ -6,6 +6,7 @@ package FunctionalProgrammingPrinciplesInScala.week5
 object ListDemo2 {
   def main(args: Array[String]) {
     val xs = new Cons[String]("head", Nil)
+
   }
 }
 
