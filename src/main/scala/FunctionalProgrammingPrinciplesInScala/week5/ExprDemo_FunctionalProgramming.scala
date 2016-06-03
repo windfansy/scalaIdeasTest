@@ -33,6 +33,7 @@ trait Expr {
     case Prod(expr1, expr2) =>
       "(" + expr1.toString + " * " + expr2.toString + ")"
     case Var(name) => name
+
     case _ => throw new Error("Not Supported Expr Type")
   }
 }
