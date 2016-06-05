@@ -23,7 +23,7 @@ object NthQueens {
       }
     }
     def placeQueens(k: Int): Set[List[Int]] = {
-      //之所以写placeQueens而不是直接用queens去�?�归，并不是因为尾�?�归，�?�是col的取值永远是0 until n
+      //之所以写placeQueens而不是直接用queens去递归，并不是因为尾递归，是col的取值永远是0 until n
       if (k == 0) Set(List())
       else
         for {

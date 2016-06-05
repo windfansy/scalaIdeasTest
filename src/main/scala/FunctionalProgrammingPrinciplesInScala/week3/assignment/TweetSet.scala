@@ -162,7 +162,7 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   }
 
   def union(that: TweetSet): TweetSet = {
-    left union (right union (that incl elem)) //必须加括号，否则写成left union right union that incl elem，�?�能奇差，跑不出结果
+    left union (right union (that incl elem)) //必须加括号，否则写成left union right union that incl elem，性能奇差，跑不出结果
     //    right.union(left.union(that.incl(elem)))
   }
 
@@ -182,7 +182,7 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     })
     maxRetweet
 
-    //    网上另外�?种实�?
+    //    网上另外一种实现
     //    val all = right.union(left);
     //    val morePopular = all.filter(p => p.retweets > elem.retweets)
     //    if (morePopular.isEmpty) elem else morePopular.mostRetweeted
