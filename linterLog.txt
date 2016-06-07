@@ -1,0 +1,67 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building My scala Test(with others) 1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ scala-demo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory E:\Code\scalaIdeasTest\src\main\resources
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (scala-compile) @ scala-demo ---
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] E:\Code\scalaIdeasTest\src\main\java:-1: info: compiling
+[INFO] E:\Code\scalaIdeasTest\src\main\scala:-1: info: compiling
+[INFO] Compiling 20 source files to E:\Code\scalaIdeasTest\target\classes at 1465182136750
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week1\assignment\main.scala:30: warning: Remove the if expression and use the condition directly.
+[INFO]         if (preParenthese == 0) true else false
+[INFO]                           ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week3\assignment\TweetReader.scala:16: warning: Inferred type Any. (This might not be what you've intended)
+[INFO]         val text = map("text")
+[INFO]             ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week3\assignment\TweetReader.scala:17: warning: Inferred type Any. (This might not be what you've intended)
+[INFO]         val retweets = map("retweet_count")
+[INFO]             ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week3\assignment\TweetReader.scala:25: warning: Inferred type Any. (This might not be what you've intended)
+[INFO]         val text = map("text")
+[INFO]             ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week3\assignment\TweetReader.scala:26: warning: Inferred type Any. (This might not be what you've intended)
+[INFO]         val retweets = map("retweets")
+[INFO]             ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week3\assignment\TweetReader.scala:80: warning: It is idiomatic to use col.head instead of col(0) for List
+[INFO]     Map() ++ Seq((sites(0) -> gizmodoTweets),
+[INFO]                        ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week7\mapDemo.scala:45: warning: col.reverse.map can be replaced by col.reverseMap.
+[INFO]     terms.toList.sorted.reverse.map { case (expo, coef) => coef + "x^" + expo }
+[INFO]                                 ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week7\mapDemo.scala:63: warning: col.reverse.map can be replaced by col.reverseMap.
+[INFO]     terms.toList.sorted.reverse.map { case (expo, coef) => coef + "x^" + expo }
+[INFO]                                 ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week7\NthQueens.scala:58: warning: queen.reverse.map can be replaced by queen.reverseMap.
+[INFO]         queen.reverse map (col =>
+[INFO]                       ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week7\NthQueens.scala:70: warning: queens.reverse.map can be replaced by queens.reverseMap.
+[INFO]       queens.reverse map { col =>
+[INFO]                      ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week7\NthQueens.scala:77: warning: queens.reverse.map can be replaced by queens.reverseMap.
+[INFO]     val lines = for (col <- queens.reverse) yield
+[INFO]                                    ^
+[WARNING] E:\Code\scalaIdeasTest\src\main\scala\FunctionalProgrammingPrinciplesInScala\week8\streamDemo.scala:32: warning: Remove the if expression and use the condition directly.
+[INFO]       if (math.abs(guess * guess - x) < 0.01 * x) true else false
+[INFO]                                       ^
+[WARNING] warning: there were 1 feature warning(s); re-run with -feature for details
+[WARNING] 13 warnings found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 17 s
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ scala-demo ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 18.875 s
+[INFO] Finished at: 2016-06-06T11:02:34+08:00
+[INFO] Final Memory: 11M/303M
+[INFO] ------------------------------------------------------------------------

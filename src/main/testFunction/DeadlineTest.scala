@@ -12,7 +12,7 @@ object DeadlineTest {
   def main(args: Array[String]) {
    // val f = new File("DeadlineTest.log")
     //println(f.getAbsolutePath)
-    val logFileNames = Array("DeadlineTest.log", "DeadlineTest2.log")
+    val logFileNames = Array("scalafmtHelp.txt", "linterLog.txt")
     val logExpectedLines = Array(130L, 129L)
     checkWeblogCompleted(logFileNames, logExpectedLines)
   }
@@ -22,7 +22,7 @@ object DeadlineTest {
     val result = logFileNames zip logExpectedLines forall {
       case (logFileName, logExpectedLine) => {
         var isCheckPassed = false
-        val deadline = 5.seconds.fromNow
+        val deadline = 30.seconds.fromNow
         while (deadline.hasTimeLeft && !isCheckPassed){
           isCheckPassed = checkLogLineCompleted(logFileName, logExpectedLine)
           println(logFileName + ": " + System.currentTimeMillis() + ": " + isCheckPassed)

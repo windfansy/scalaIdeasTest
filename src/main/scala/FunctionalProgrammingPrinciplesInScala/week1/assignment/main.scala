@@ -5,9 +5,12 @@ package FunctionalProgrammingPrinciplesInScala.week1.assignment
   */
 object main {
   def main(args: Array[String]) {
-    testPascal()
+   /* testPascal()
     testBalance()
-    testCountChange()
+    testCountChange()*/
+    val longSeq = Seq[Long](4, 5, 6)
+    val ele = longSeq.head
+
   }
 
   def pascal(c: Int, r: Int): Int = {

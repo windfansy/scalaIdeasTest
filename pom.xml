@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <name>My scala Test(with others)</name>
 
-<!--    <distributionManagement>
+    <distributionManagement>
         <repository>
             <id>gridsum</id>
             <name>GridSum Release Repository</name>
@@ -22,7 +22,7 @@
             <name>GridSum Snapshots Snapshots</name>
             <url>http://maven.gridsum.com:8081/nexus/content/repositories/gridsum-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>-->
+    </distributionManagement>
 
     <properties>
         <encoding>UTF-8</encoding>
@@ -58,6 +58,10 @@
                 </executions>
                 <configuration>
                     <scalaVersion>2.10.4</scalaVersion>
+                    <args>
+                        <arg>-Xplugin:${basedir}/linter_2.10-0.1-SNAPSHOT.jar</arg>
+                        <!-- <arg>-P:linter:disable:CloseSourceFile</arg> -->
+                    </args>
                 </configuration>
             </plugin>
 
