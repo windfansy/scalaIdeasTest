@@ -3,12 +3,10 @@
  */
 public class JMXTest {
     public static void main(String[] args){
-        try {
-            System.out.print("begin sleep for 1 minute");
-            Thread.sleep(10000);
-            System.out.print("end sleep");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        long startTime = System.currentTimeMillis();
+        long duration = 1 * 60 * 1000; // 1 minute to mills
+        while(System.currentTimeMillis() - startTime < duration)
+            System.out.println("Time has not yet");
+        System.out.println("Done");
     }
 }
