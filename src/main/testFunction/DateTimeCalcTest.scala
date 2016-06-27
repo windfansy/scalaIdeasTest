@@ -25,6 +25,8 @@ object DateTimeCalcTest {
     println(midNight.toDate)
     println(midNight.getMillis)
     println("Delta: " + (d1.getTime - midNight.getMillis))
+
+    println("d41d8cd98f00b204e9800998ecf8427e6f338ae8".length)
     //println(midNight.toDate.getTime)
   }
 }
