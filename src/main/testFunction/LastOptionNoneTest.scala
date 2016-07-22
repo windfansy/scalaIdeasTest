@@ -7,5 +7,11 @@ object LastOptionNoneTest {
     val seq2 = seq1.flatMap { (ele: Int) => if (ele > 3) Some(ele) else None }
     println(seq2.lastOption.get)
 
+    val test =
+      s"""|${if (3 > 1) 2 else 1}
+         |${if (1 < 0) 1 else 0}
+      """.stripMargin.replaceAll("\n", " ")
+    println(test)
+
   }
 }
