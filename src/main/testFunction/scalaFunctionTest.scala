@@ -2,7 +2,7 @@
   * Created by T440P on 2016/8/5.
   */
 object scalaFunctionTest {
-  val targetpagePattern = """/targetpage[\s]*/""".r
+  val targetpagePattern = """/[\s]*targetpage[\s]*/""".r
 
   def main(args: Array[String]) {
     val numList = Seq(1, 2, 3, 4, 5)
