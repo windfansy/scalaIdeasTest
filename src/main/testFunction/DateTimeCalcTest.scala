@@ -7,7 +7,7 @@ import org.joda.time.DateTime
   */
 object DateTimeCalcTest {
   def main(args: Array[String]) {
-    val d1 = new Date(1470655433825L)
+    val d1 = new Date(1469374291794L)
     val d12 = new Date(1470655434052L)
     val d2 = new DateTime(2016, 6, 23, 23, 34, 38)
     println(d1)
