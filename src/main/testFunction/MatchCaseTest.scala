@@ -8,6 +8,11 @@ object MatchCaseTest {
       case obj: Person => println("Match Person")
       case obj: Employee => println("Match Employee")
     }
+
+    val str = "testCase"
+    str match {
+      case log if str.length > 20 => println("length > 20")
+    }
   }
 
 }
