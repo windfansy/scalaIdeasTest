@@ -28,7 +28,8 @@ function parselog {
             tmp=${origin_href#*containerlogs/}
             container=${tmp%/hadoop-wd*}
             real_href="http://gs-server-1000:19888/jobhistory/logs/${server}:8041/${container}/${container}/hadoop-wd/stderr?start=0"
-#            wget -O- $real_href | sed -n '/[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/p' > $theDate/$server.log
+            # log like exception also not contains date format `20161026`, so save all html to our log
+            # wget -O- $real_href | sed -n '/[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/p' > $theDate/$server.log
             wget -O- $real_href  > $theDate/$server.log
 			if [ -s $theDate/$server.log ]; then
 				empty="false"
