@@ -11,6 +11,10 @@ touch "log/$logName.log"
 
 function parselog {
     element=$1
+    username=$2
+    # extract hostname
+    host=$(echo $element | cut -d '/' -f3 | cut -d ':' -f1)
+
     wget "${element% #*}" -O tmp/executor.tmp
     # extract date like '20161026' from web
     dateLine=$(sed -n '/<title>/p' tmp/executor.tmp)
@@ -26,8 +30,8 @@ function parselog {
             tmp=${origin_href#*//}
             server=${tmp%:*}
             tmp=${origin_href#*containerlogs/}
-            container=${tmp%/hadoop-wd*}
-            real_href="http://gs-server-1000:19888/jobhistory/logs/${server}:8041/${container}/${container}/hadoop-wd/stderr?start=0"
+            container=${tmp%/${username}*}
+            real_href="http://${host}:19888/jobhistory/logs/${server}:8041/${container}/${container}/${username}/stderr?start=0"
             # log like exception also not contains date format `20161026`, so save all html to our log
             # wget -O- $real_href | sed -n '/[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]/p' > $theDate/$server.log
             wget -O- $real_href  > $theDate/$server.log
@@ -64,18 +68,18 @@ if [ "$1" == "-all" ]; then
 	readarray urlArray < "tmp/$logName-urlList.txt"
 	for element in "${urlArray[@]}"
 	do      
-        	parselog $element
+        	parselog $element $3
 	done	
 elif [ "$1" == "-list" ]; then
 	echo "Run in List Mode" >> log/$logName.log
 	readarray urlArray < $2
 	for element in "${urlArray[@]}" 
 	do
-		parselog $element
+		parselog $element $3
 	done
 elif [ "$1" == "-link" ]; then
 	echo "Run in link Mode" >> log/$logName.log
-	parselog $2
+	parselog $2 $3
 else
    echo "error argument $@"
    exit 1
