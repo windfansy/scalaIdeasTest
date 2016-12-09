@@ -86,8 +86,8 @@ def create_tables_from_file(create_table_file):
 
 def main():
     # describe_tables()
-    show_create_tables()
-    drop_tables()
+    show_create_tables(all_table=False, hostname=None, MouseClick)
+    #drop_tables()
 
 
 if __name__ == "__main__":
