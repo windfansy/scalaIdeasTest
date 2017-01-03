@@ -86,9 +86,20 @@ def create_tables_from_file(create_table_file):
 
 def main():
     # describe_tables()
-    show_create_tables(False, None, 'MouseClick')
+    # show_create_tables(False, None, 'MouseClick')
     #drop_tables()
+    test_function()
 
+
+def test_function():
+    def compute_stats_sql(table):
+        return '''compute stats {0};'''.format(table)
+
+    all_tables = (PARTITION_PROFILE_GROUP_TABLES + PARTITION_DATE_TABLES + NON_PARTITION_TABLES +
+                  PARTITION_PROFILEID_TABLES)
+    sql = ''.join(map(lambda table: compute_stats_sql(table), all_tables))
+    # sql = ';'.join(map(lambda table: compute_stats_sql(table), all_tables))
+    print sql
 
 if __name__ == "__main__":
     main()
