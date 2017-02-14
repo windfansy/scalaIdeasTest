@@ -1,11 +1,10 @@
-package TestFunction;
 
 /**
  * Created by T440P on 2016/4/1.
  */
 public class GetEnumValueTest {
     public static void main(String[] args){
-        System.out.println(GsCommand.values()[3]);
+        System.out.println(GsCommand.SPV.toString());
     }
 }
 
