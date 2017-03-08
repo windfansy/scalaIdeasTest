@@ -5,6 +5,8 @@
 public class GetEnumValueTest {
     public static void main(String[] args){
         System.out.println(GsCommand.SPV.toString());
+        long anotherLong = 2_147_483_648L;
+        System.out.println(anotherLong);
     }
 }
 
