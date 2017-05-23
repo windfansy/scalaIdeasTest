@@ -1,4 +1,5 @@
 import java.net.URI
+import java.util.{Date, Calendar}
 
 import scala.io.Source
 
@@ -7,16 +8,20 @@ import scala.io.Source
   */
 object InputStreamTest {
   def main(args: Array[String]) {
-//    val inputStream = this.getClass.getClassLoader.getResourceAsStream("dimIntervals.json")
-//    if (inputStream != null) {
-//      val source = Source.fromInputStream(inputStream)("UTF-8")
-//      val jsonString = source.getLines() mkString
-//    }
-    val url = "http://wd3.gridsumdissector.com/#/reportCenter?sid=5015&pid=5069&paramsid=838c41811926b2b07548c14c89bffdfd&ud=1492511427534"
-    val trimedUrl = url.trim
-    val uri = new URI(trimedUrl).normalize()
-    println(uri.getRawQuery)
-    println(uri.getRawFragment)
+    //    val inputStream = this.getClass.getClassLoader.getResourceAsStream("dimIntervals.json")
+    //    if (inputStream != null) {
+    //      val source = Source.fromInputStream(inputStream)("UTF-8")
+    //      val jsonString = source.getLines() mkString
+    //    }
+//    val url = "http://wd3.gridsumdissector.com/#/reportCenter?sid=5015&pid=5069&paramsid=838c41811926b2b07548c14c89bffdfd&ud=1492511427534"
+//    val trimedUrl = url.trim
+//    val uri = new URI(trimedUrl).normalize()
+//    println(uri.getRawQuery)
+//    println(uri.getRawFragment)
+    val CALENDAR = Calendar.getInstance()
+    CALENDAR.setTime(new Date(116, 0, 2))
+    CALENDAR.setMinimalDaysInFirstWeek(7)
+    println(CALENDAR.get(Calendar.WEEK_OF_YEAR))
 
 
   }
